@@ -1,0 +1,28 @@
+<div class="container">
+  <table class="table" #table>
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let t of tabledata;let i=index" (click)="onclick(i,tabledata.length)">
+        <td>{{i+1}}</td>
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="t.fn">
+        </td>
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="t.ln">
+        </td>
+        <td>{{t.mail}}</td>
+        <td>
+          <input type="text" placeholder="Edit" id="text{{i}}">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

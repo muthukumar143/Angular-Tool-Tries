@@ -1,0 +1,15 @@
+<button class="btn btn-primary" (click)="exportTableToExcel('table2conv')" >CLick</button>
+<table class="table table-striped" id='table2conv'>
+  <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of datas">
+      <td>{{e.s_no}}</td>
+      <td>{{e.name}}</td>
+    </tr>
+  </tbody>
+</table>

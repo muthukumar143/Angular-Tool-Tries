@@ -1,0 +1,166 @@
+<br>
+<br>
+
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2">
+        <mat-form-field>
+          <input matInput placeholder="Employee Name" (input)='search_Name = $event.target.value'>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-2">
+        <mat-form-field>
+          <input matInput placeholder="Company" (input)='search_Company = $event.target.value'>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-2">
+        <mat-form-field>
+          <input matInput placeholder="Location" (input)='search_Location = $event.target.value'>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-2">
+        <button mat-mini-fab color="primary" (click)='Employee_Load_On_Search()'>
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+      <div class="col-sm-2">
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div *ngFor="let field of table_columns">
+        <mat-checkbox style="padding-right: 15px" (change)="toggle(field)">{{field}}</mat-checkbox>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="example-container mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container *ngFor="let column of displayedColumns">
+      <ng-container [cdkColumnDef]="column">
+        <mat-header-cell *cdkHeaderCellDef mat-sort-header [ngClass]="{'sticky': column == 'Employee_Code'}" [ngClass]="{'sticky': column == 'Employee_Name' }"> {{column.split("_").join(" ")}} </mat-header-cell>
+        <mat-cell *cdkCellDef="let element" [ngClass]="{'sticky': column == 'Employee_Code'}" [ngClass]="{'sticky': column == 'Employee_Name' }"> {{element[column]}} </mat-cell>
+      </ng-container>
+    </ng-container>
+
+    <mat-header-row *cdkHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+<br>
+<br>
+<br>
+<div class="example-container mat-elevation-z8">
+  <mat-table [dataSource]="dataSource">
+
+    <ng-container cdkColumnDef="Employee_Code" [sticky] = 'true'>
+      <mat-header-cell *cdkHeaderCellDef> Employee_Code </mat-header-cell>
+      <mat-cell *cdkCellDef="let element"> {{element.Employee_Code}} </mat-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="Employee_Name" [sticky] = 'false'>
+      <mat-header-cell *cdkHeaderCellDef> Employee Name </mat-header-cell>
+      <mat-cell *cdkCellDef="let element"> {{element.Employee_Name}} </mat-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="Date_Of_Joining">
+      <mat-header-cell *cdkHeaderCellDef> Date Of Joining </mat-header-cell>
+      <mat-cell *cdkCellDef="let element"> {{element.Date_Of_Joining}} </mat-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="Salary">
+      <mat-header-cell *cdkHeaderCellDef> Salary </mat-header-cell>
+      <mat-cell *cdkCellDef="let element"> {{element.Salary}} </mat-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="Section">
+      <mat-header-cell *cdkHeaderCellDef> Section </mat-header-cell>
+      <mat-cell *cdkCellDef="let element"> {{element.Section}} </mat-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="Company">
+      <mat-header-cell *cdkHeaderCellDef> Company </mat-header-cell>
+      <mat-cell *cdkCellDef="let element"> {{element.Company}} </mat-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="Location">
+      <mat-header-cell *cdkHeaderCellDef> Location </mat-header-cell>
+      <mat-cell *cdkCellDef="let element"> {{element.Location}} </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *cdkHeaderRowDef="displayedColumns1; sticky: true"></mat-header-row>
+    <mat-row *cdkRowDef="let row; columns: displayedColumns1;"></mat-row>
+  </mat-table>
+</div>
+
+<br>
+<br>
+<br>
+
+<mat-form-field>
+  <input matInput placeholder="Key Press" (keypress)="click($event)" name="1st">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput placeholder="Key Press" (keypress)="click($event)" name="2nd">
+</mat-form-field>
+
+<!-- mat table  -->
+
+<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width:100%">
+
+  <ng-container [cdkColumnDef]="column" *ngFor="let column of displayedColumns">
+    <th mat-header-cell *cdkHeaderCellDef  style="position: sticky"> {{column}} </th>
+    <td mat-cell *cdkCellDef="let element"> {{element[column]}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> -->
+
+
+<!-- <tr *ngFor="let col of emp; let i = index">
+    <td *ngIf="table_mod[i].Value">{{col.Employee_Code}}</td>
+    <td *ngIf="table_mod[i].Value">{{col.Employee_Name}}</td>
+    <td *ngIf="table_mod[i].Value">{{col.Date_Of_Joining}}</td>
+    <td *ngIf="table_mod[i].Value">{{col.Salary}}</td>
+    <td *ngIf="table_mod[i].Value">{{col.Section}}</td>
+    <td *ngIf="table_mod[i].Value">{{col.Company}}</td>
+    <ng-container *ngFor="let data of table_mod">
+
+    </ng-container>
+  </tr> -->
+
+
+<!-- <table class="table table-striped">
+      <thead>
+
+        <ng-container *ngFor="let row of table_columns;let i = index">
+          <th style="padding-right: 15px" *ngIf="table_mod[i].Value">{{row}}</th>
+        </ng-container>
+
+      </thead>
+
+
+      <tbody>
+        <ng-container *ngFor="let col of emp; let i = index">
+          <td *ngIf="table_mod[i].Value && i < table_mod.length">
+
+              {{col[table_mod[i].Column]}}
+          </td>
+        </ng-container>
+      </tbody>
+
+
+    </table> -->

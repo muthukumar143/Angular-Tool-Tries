@@ -1,0 +1,22 @@
+<div class="container">
+  <table #table class="table table-stripped">
+    <thead>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of emp1; let i=index">
+        <td>{{e.name}}</td>
+        <td>{{e.age}}</td>
+        <td>{{e.gender}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="btn-group pull-right">
+  <button [disabled]='firstState' class="btn btn-primary" (click)="onFirst()">First</button>
+  <button [disabled]='prevState' class="btn btn-primary" (click)="on_previous()">Previous</button>
+  <button [disabled]='nextState' class="btn btn-primary" (click)="on_next()">Next</button>
+  <button [disabled]='lastState' class="btn btn-primary" (click)="onLast()">Last</button>
+</div>

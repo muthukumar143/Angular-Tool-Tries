@@ -1,0 +1,92 @@
+/* .table {
+  width: 100%;
+} */
+
+.example-container {
+  height: 400px;
+  width: 400px;
+  overflow: auto;
+}
+
+mat-table {
+  width: 800px;
+}
+
+.mat-cell .mat-header-cell .mat-row .mat-table {
+  background: inherit;
+  /* overflow: hidden; */
+}
+
+.mat-header-row {
+  background: inherit;
+  /* overflow: hidden; */
+}
+
+.mat-table .mat-header-cell .tbody .thead .mat-cell {
+  background: inherit;
+  background-color: white;
+  }
+
+/* td.mat-cell:nth-child(2),th.mat-header-cell:nth-child(2) {
+  padding-left: 24px;
+  position: sticky;
+  background-color: white;
+} */
+
+/* td.mat-cell:first-child,
+th.mat-header-cell:first-child{
+  padding-left: 24px;
+  position: sticky;
+  right:0;
+  left:0;
+  background-color: white;
+} */
+
+/* .secondChild {
+  padding-left: 24px;
+  position: sticky;
+  background-color: white;
+} */
+
+/* td.mat-cell .cdk-column-Employee_Name {
+  position: sticky;
+  background-color: white;
+
+} */
+
+/*
+tr.mat-header-row, tr.mat-row {
+  position: static;
+  top: 0;
+} */
+
+/* #secondchild{
+
+  position: sticky;
+  left:0;
+  background-color: white;
+} */
+
+th.mat-column-position, td.mat-column-position {
+  padding-left: 8px;
+}
+
+.mat-table-sticky:first-child {
+  border-right: 1px solid #e0e0e0;
+}
+
+.mat-table-sticky:last-child {
+  border-left: 1px solid #e0e0e0;
+}
+
+.sticky {
+  position: sticky;
+}
+
+
+
+/* th.mat-header-cell {
+  position: sticky;
+  top: 0;
+  background-color: white;
+} */

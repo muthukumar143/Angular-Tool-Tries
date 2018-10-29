@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-bordered" style="min-height: 300px; max-height: 100px">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Country</th>
+            <th>Product</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let g of groupdata">
+            <td>{{g.id}}</td>
+            <td>{{g.country}}</td>
+            <td>{{g.product}}</td>
+            <td>{{g.amount}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

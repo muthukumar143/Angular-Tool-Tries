@@ -1,0 +1,18 @@
+<div class="container"><br><br>
+  <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search"><br><br><br>
+  <!-- <button class="btn btn-primary" (click)="trimming()"></button> -->
+  <table class="table table-striped">
+    <thead>
+      <th>
+        Name
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let n of names1">
+        <td>
+          {{n.name}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

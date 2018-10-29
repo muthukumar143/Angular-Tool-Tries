@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <div class="docs-primary-header component-page-header" id="fixedheader">
+    <div class="container-fluid" style="padding-left:0px">
+      <div class="row">
+        <div class="col-lg-4 col-xl-6">
+          <ul class="nav">
+            <div style="border-right:2px solid #990000;background:#800000">
+              <li class="nav-item ">
+                <a class="nav-link " style="color:white;font-size:11px;padding-top:10px" role="button">
+                  <i class="fa fa-home" aria-hidden="true"></i>
+                </a>
+              </li>
+            </div>
+            <div>
+              <span *ngFor="let item of navItems">
+                <span *ngIf="item.children && item.children.length > 0">
+                  <button mat-flat-button [disableRipple]="true" [matMenuTriggerFor]="menu.childMenu" style="color: white;background: inherit;border-right:2px solid #990000;background:#800000;font-size: 11px">
+                    <i class="fa fa-bolt" aria-hidden="true"></i> &nbsp;
+                    {{item.displayName}}
+                    <mat-icon style="font-size: 15px">expand_more</mat-icon>
+                  </button>
+                  <app-child-menu-items #menu [items]="item.children"></app-child-menu-items>
+                </span>
+                <span *ngIf="!item.children || item.children.length === 0"> &nbsp;
+                  <button mat-button color="primary">
+                    {{item.displayName}}
+                  </button>
+                </span>
+              </span>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

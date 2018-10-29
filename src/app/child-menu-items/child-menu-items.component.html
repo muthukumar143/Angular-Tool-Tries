@@ -1,0 +1,15 @@
+<mat-menu #childMenu="matMenu" [overlapTrigger]="false">
+  <span *ngFor="let child of items">
+    <span *ngIf="child.children && child.children.length > 0">
+      <button mat-menu-item [disableRipple]="true" color="primary" [matMenuTriggerFor]="menu.childMenu" style="font-size: 12px">
+        <span>{{child.displayName}}</span>
+      </button>
+      <app-child-menu-items #menu [items]="child.children"></app-child-menu-items>
+    </span>
+    <span *ngIf="!child.children || child.children.length === 0">
+      <button mat-menu-item [disableRipple]="true" style="width:200px;padding-top:0px;padding-bottom: 0px ;border-bottom: 0px;font-size: 12px;">
+        <span>{{child.displayName}}</span>
+      </button>
+    </span>
+  </span>
+</mat-menu>
