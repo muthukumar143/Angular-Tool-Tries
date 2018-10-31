@@ -70,7 +70,7 @@ import { JqueryTestComponent } from "./jquery-test/jquery-test.component";
 import { HeaderComponent } from "./header/header.component";
 import { ChildMenuItemsComponent } from "./child-menu-items/child-menu-items.component";
 import { RouterModule } from "@angular/router";
-import { pagination } from "./global_Paginator";
+import { paginations } from "./global_Paginator";
 
 @NgModule({
   exports: [
@@ -151,7 +151,7 @@ export class DemoMaterialModule {}
     CommonModule,
     RouterModule
   ],
-  providers: [pagination],
+  providers: [paginations],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

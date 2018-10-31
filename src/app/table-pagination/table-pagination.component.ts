@@ -1,4 +1,4 @@
-import { pagination, returns } from "./../global_Paginator";
+import { paginations, returns } from "./../global_Paginator";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -43,7 +43,7 @@ export class TablePaginationComponent implements OnInit {
   ];
 
   emp1: emp_model[] = [];
-  constructor(private _paginator: pagination) {}
+  constructor(private _paginator: paginations) {}
 
   ngOnInit() {
     let tableMetaData = this._paginator.onStart(this.emp, this.pagesize);
