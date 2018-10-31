@@ -1,4 +1,4 @@
-export class pagination {
+export class paginations {
   constructor() {}
 
   returnType: returns = {
@@ -6,11 +6,16 @@ export class pagination {
     nextState: false,
     prevState: false,
     firstState: false,
-    lastState: false
+    lastState: false,
+    totalRecords: null,
+    viewStart: null,
+    viewEnd: null,
+    itemsPerPage: null
   };
 
   onStart(totalTableRecords: any[], paginatorSize: number): returns {
-    debugger;
+    //debugger;
+    this.returnType.records = [];
     if (totalTableRecords.length < paginatorSize) {
       this.returnType.records = totalTableRecords;
       this.returnType.firstState = true;
@@ -26,7 +31,12 @@ export class pagination {
       this.returnType.prevState = true;
       this.returnType.lastState = false;
     }
-    return this.returnType;
+    return this.paginationUtils(
+      totalTableRecords,
+      this.returnType.records,
+      paginatorSize,
+      this.returnType
+    );
   }
 
   nextPage(
@@ -34,7 +44,7 @@ export class pagination {
     totalTableRecord: any[],
     paginatorSize: number
   ): returns {
-    debugger;
+    //debugger;
     let currentLastNumber = currentTableRecord.length - 1;
     let currentLastDataIndex = totalTableRecord.findIndex(
       datas => datas === currentTableRecord[currentLastNumber]
@@ -69,7 +79,12 @@ export class pagination {
       this.returnType.firstState = false;
     }
     this.returnType.records = nextRecords;
-    return this.returnType;
+    return this.paginationUtils(
+      totalTableRecord,
+      this.returnType.records,
+      paginatorSize,
+      this.returnType
+    );
   }
 
   previousPage(
@@ -105,11 +120,16 @@ export class pagination {
     }
 
     this.returnType.records = prevRecords.reverse();
-    return this.returnType;
+    return this.paginationUtils(
+      totalTableRecord,
+      this.returnType.records,
+      paginatorSize,
+      this.returnType
+    );
   }
 
   firstPage(totalTableRecords: any[], paginatorSize: number): returns {
-    debugger;
+    //debugger;
     let firstPageRecords: any[] = [];
     if (totalTableRecords.length >= paginatorSize) {
       for (let i = 0; i < paginatorSize; i++) {
@@ -123,11 +143,16 @@ export class pagination {
     this.returnType.prevState = true;
     this.returnType.nextState = false;
     this.returnType.lastState = false;
-    return this.returnType;
+    return this.paginationUtils(
+      totalTableRecords,
+      this.returnType.records,
+      paginatorSize,
+      this.returnType
+    );
   }
 
   lastPage(totalTableRecord: any[], paginatorSize: number): returns {
-    debugger;
+    //debugger;
     let remainingDatasLength = totalTableRecord.length % paginatorSize;
     let lastRecords: any[] = [];
     if (remainingDatasLength !== 0) {
@@ -142,7 +167,7 @@ export class pagination {
       for (
         let i = totalTableRecord.length - 1, j = 1;
         j <= paginatorSize;
-        j++
+        j++, i--
       ) {
         lastRecords.push(totalTableRecord[i]);
       }
@@ -152,7 +177,30 @@ export class pagination {
     this.returnType.prevState = false;
     this.returnType.nextState = true;
     this.returnType.lastState = true;
-    return this.returnType;
+    return this.paginationUtils(
+      totalTableRecord,
+      this.returnType.records,
+      paginatorSize,
+      this.returnType
+    );
+  }
+
+  paginationUtils(
+    totalTableRecord: any[],
+    currentRecord: any[],
+    paginatorSize: number,
+    paginated: returns
+  ): returns {
+    paginated.itemsPerPage = paginatorSize;
+    paginated.totalRecords = totalTableRecord.length;
+    paginated.viewStart =
+      totalTableRecord.findIndex(records => records === currentRecord[0]) + 1;
+    paginated.viewEnd =
+      totalTableRecord.findIndex(
+        records => records === currentRecord[currentRecord.length - 1]
+      ) + 1;
+    console.log(paginated);
+    return paginated;
   }
 }
 
@@ -162,4 +210,8 @@ export class returns {
   prevState: boolean;
   firstState: boolean;
   lastState: boolean;
+  totalRecords?: number;
+  viewStart?: number;
+  viewEnd?: number;
+  itemsPerPage?: number;
 }
