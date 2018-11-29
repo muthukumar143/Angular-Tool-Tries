@@ -1,0 +1,5 @@
+<mat-form-field>
+  <input matInput [value]='selectedDate' [matDatepicker]="picker" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker startView='multi-year' color='accent' (monthSelected)='onMonthSelected($event)' #picker></mat-datepicker>
+</mat-form-field>

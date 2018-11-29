@@ -71,6 +71,7 @@ import { HeaderComponent } from "./header/header.component";
 import { ChildMenuItemsComponent } from "./child-menu-items/child-menu-items.component";
 import { RouterModule } from "@angular/router";
 import { paginations } from "./global_Paginator";
+import { MonthPickerComponent } from "./month-picker/month-picker.component";
 
 @NgModule({
   exports: [
@@ -139,7 +140,8 @@ export class DemoMaterialModule {}
     DateTestComponent,
     JqueryTestComponent,
     HeaderComponent,
-    ChildMenuItemsComponent
+    ChildMenuItemsComponent,
+    MonthPickerComponent
   ],
   imports: [
     BrowserModule,
