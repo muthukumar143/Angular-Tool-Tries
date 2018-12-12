@@ -72,6 +72,7 @@ import { ChildMenuItemsComponent } from "./child-menu-items/child-menu-items.com
 import { RouterModule } from "@angular/router";
 import { paginations } from "./global_Paginator";
 import { MonthPickerComponent } from "./month-picker/month-picker.component";
+import { ChilltheLionComponent } from './chillthe-lion/chillthe-lion.component';
 
 @NgModule({
   exports: [
@@ -114,7 +115,8 @@ import { MonthPickerComponent } from "./month-picker/month-picker.component";
     MatTooltipModule,
     MatTreeModule,
     CdkTreeModule
-  ]
+  ],
+  declarations: [ChilltheLionComponent]
 })
 export class DemoMaterialModule {}
 
